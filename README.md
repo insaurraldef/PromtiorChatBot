@@ -66,6 +66,10 @@ Below is a diagram showing the system components and their interactions, from re
    ```bash
    python app.py
    ```
+   or
+   ```bash
+   python3 app.py
+   ```
 
 ### Usage Instructions
 
