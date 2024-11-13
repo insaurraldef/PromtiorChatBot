@@ -2,16 +2,9 @@
 
 ## This is a simple chatbot that can answer some questions about the Promtior company.
 
-### How to run the chatbot:
-1. Clone the repository
-2. Run the command `python3 app.py`
-3. Ask the chatbot some questions about the Promtior company
-4. Enjoy!
-# Promtior Chatbot Assistant
-
 ## Project Overview
 
-This project implements a chatbot assistant based on the RAG (Retrieval Augmented Generation) architecture to answer questions about the company Promtior. The solution uses the **LangChain** library for the response generation chain and **Langserve** for deployment. The chatbot retrieves information from two sources: the Promtior website and a provided PDF file. This information serves as context to answer questions about the company’s services, founding date, and other key features.
+This project implements a chatbot assistant based on the RAG (Retrieval Augmented Generation) architecture to answer questions about the company Promtior. The solution uses the **LangChain** library for the response generation chain and **LangServe** for deployment. The chatbot retrieves information from two sources: the Promtior website and a provided PDF file. This information serves as context to answer questions about the company’s services, founding date, and other key features.
 
 The chatbot development involved several stages:
 1. **Information Retrieval** from the web and PDF.
@@ -33,8 +26,8 @@ Below is a diagram showing the system components and their interactions, from re
 
 ### System Components
 
-1. **Interactive Menu**: 
-   - A console menu allows the user to select predefined questions about Promtior or ask custom questions. This menu is located in the `main()` function of the program.
+1. **API Endpoint**:
+   - A `/chatbot` endpoint is exposed through FastAPI to receive questions from users and return answers based on the context. An additional `/chain` route is provided for playground access.
 
 2. **Document Retrieval Functions**:
    - `get_documents_from_web(url)`: Uses `WebBaseLoader` to extract content from the Promtior website and splits it into manageable chunks.
@@ -53,28 +46,29 @@ Below is a diagram showing the system components and their interactions, from re
 1. Clone the repository.
    ```bash
    git clone https://github.com/insaurraldef/PromtiorChatBot.git
-   ```
-2. Install the required packages.
-   ```bash
-    pip install -r requirements.txt
+    cd PromtiorChatBot
     ```
-3. Create an .env file on the src folder with the following variables:
+2. Install the required packages.
+3. Create an .env file in the project directory with the following variables:
     ```bash
     OPENAI_API_KEY=your_openai_api_key
     ```
-4. Run the application.
-   ```bash
-   python app.py
-   ```
+4. Run the FastAPI server:
+    ```bash
+    python server.py
+    ```
    or
+    ```bash
+    python3 server.py
+    ```
+   The API server will start on http://localhost:8000.
+5. Access the `/chatbot` endpoint to interact with the chatbot.
+
+## Usage Instructions
+1.	Access the /chatbot endpoint to interact with the Promtior chatbot.
+2.	Send a POST request to http://localhost:8000/chatbot with JSON data like:
    ```bash
-   python3 app.py
+    "input": "What services does Promtior offer?"
    ```
-
-### Usage Instructions
-
-1. Run the application following the steps above.
-2. Select a predefined question or ask a custom question.
-3. The chatbot will process the question and provide an answer 
-based on the context retrieved from the website and PDF.
-4. Enjoy interacting with the Promtior chatbot assistant!
+The chatbot will respond with an answer based on the context retrieved from the website and PDF file.
+3.	Enjoy interacting with the Promtior chatbot assistant!
