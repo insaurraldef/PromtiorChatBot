@@ -18,12 +18,6 @@ The chatbot development involved several stages:
 
 ## Architecture and Components
 
-### Component Diagram
-
-Below is a diagram showing the system components and their interactions, from receiving a question to generating the response.
-
-![Component Diagram](path/to/diagram.png) <!-- Insert the diagram here after creating it in Draw.io or Lucidchart -->
-
 ### System Components
 
 1. **API Endpoint**:
@@ -41,6 +35,7 @@ Below is a diagram showing the system components and their interactions, from re
 
 ## Usage
 
+## Locally:
 ### Installation
 
 1. Clone the repository.
@@ -64,11 +59,22 @@ Below is a diagram showing the system components and their interactions, from re
    The API server will start on http://localhost:8000.
 5. Access the `/chatbot` endpoint to interact with the chatbot.
 
+## In Production:
+1. Go to postman
+2. copy this endpoint: https://promtiorchatbot-production.up.railway.app/chatbot
+3. Send a POST method with the following JSON format:
+    ```bash
+    "input": "What services does Promtior offer?"
+    ```
+
 ## Usage Instructions
 1.	Access the /chatbot endpoint to interact with the Promtior chatbot.
 2.	Send a POST request to http://localhost:8000/chatbot with JSON data like:
    ```bash
     "input": "What services does Promtior offer?"
    ```
-The chatbot will respond with an answer based on the context retrieved from the website and PDF file.
-3.	Enjoy interacting with the Promtior chatbot assistant!
+The chatbot will respond with an answer based on the context retrieved from the website and PDF file. 
+
+
+# Enjoy interacting with the Promtior chatbot assistant!
+## Franco!
