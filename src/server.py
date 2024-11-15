@@ -1,4 +1,7 @@
+import os
+
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -55,6 +58,14 @@ app = FastAPI(
     title="Promtior Chatbot Server",
     version="1.0",
     description="An API server for the Promtior chatbot using LangChain",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[os.getenv("FRONTEND_URL")],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Endpoint to accept only a text question from the user
